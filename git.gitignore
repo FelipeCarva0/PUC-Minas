@@ -1,0 +1,26 @@
+# Ignorar configurações do VSCode
+.vscode/
+
+# Ignorar binários
+/bin/
+/build/
+
+# Ignorar arquivos temporários de sistema
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos do compilador
+*.class
+
+# Ignorar arquivos de backup do editor
+*~
+*.swp
+
+# Ignorar o OneDrive (caso use)
+~$*
+
+# Ignorar pastas específicas
+node_modules/
+dist/
