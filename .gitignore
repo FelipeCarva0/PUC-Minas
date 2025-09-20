@@ -24,3 +24,5 @@ Thumbs.db
 # Ignorar pastas específicas
 node_modules/
 dist/
+
+.gitignore
