@@ -1,0 +1,32 @@
+/*Projetar o primeiro nome e o último nome dos atores de sexo feminino;*/
+SELECT first_name, last_name
+FROM actors
+WHERE gender = 'F'
+
+
+/*Projetar o nome dos filmes com ano superior à 1999;*/
+SELECT name
+FROM movies
+WHERE year > 1999
+
+
+/*Projetar o nome do filme e o nome do diretor de cada filme;*/
+SELECT A.name, B.first_name, B.last_name
+FROM movies AS A JOIN movies_directors AS C ON A.id = C.movie_id JOIN directors AS B ON C.director_id = B.id
+
+
+/*Projetar o nome do filme, nome do ator e o papel que cada ator teve no filme para filmes com ranking acima da nota 6;*/
+
+SELECT A.name, B.first_name, B.last_name, C.role
+FROM movies AS A JOIN roles AS C ON A.id = C.movie_id JOIN actors AS B ON B.id = C.actor_id
+WHERE A.rank > 6
+
+
+/*Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.*/
+
+SELECT A.genre, AVG(B.rank) AS MEDIA, MIN(B.rank) AS MINIMO, MAX(B.rank) AS MAXIMO
+FROM movies_genres AS A JOIN movies AS B ON (A.movie_id = B.id)
+GROUP BY A.genre
+
+
+

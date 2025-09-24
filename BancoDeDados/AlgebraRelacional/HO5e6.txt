@@ -31,3 +31,34 @@ B = A ⨝ director_id = id directors
 /*Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.*/
 A = movies ⨝ id = movie_id movies_genres
 γ genre; AVG(rank) → Medi,min(rank) → Mini, max(rank) → Maxi (A)
+
+
+/*Projetar o primeiro nome e o último nome dos atores que são diretores;*/
+A = π first_name, last_name actors
+B = π first_name, last_name directors
+A∩B
+
+/*Projetar o primeiro nome e o último nome dos atores que não são diretores;*/
+A = π first_name, last_name actors
+B = π first_name, last_name directors
+C = A∩B
+πfirst_name, last_name actors - C
+
+/*Projetar o primeiro nome e o último nome dos atores e diretores;*/
+A = π first_name, last_name actors
+B = πfirst_name, last_name directors
+A∪B
+
+/*Projetar o nome dos filmes que não são dirigidos por nenhum diretor;*/
+A = movies⨝ id = movie_id movies_directors
+B = πname (A)
+C = πname movies
+C-B
+
+/*Projetar primeiro nome e o último nome dos atores que não atuaram em pelo menos dois filmes;*/
+A = γactor_id; count(movie_id) → Total (roles)
+B= σ Total<2 A
+C = B⨝ actor_id = id actors
+πfirst_name, last_name C
+
+
