@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project source="2.16.2.0.exe" version="1.0">
-This file is intended to be loaded by Logisim http://logisim.altervista.org
-<lib desc="#Wiring" name="0"/>
+  This file is intended to be loaded by Logisim http://logisim.altervista.org
+
+  <lib desc="#Wiring" name="0"/>
   <lib desc="#Gates" name="1"/>
   <lib desc="#TTL" name="2"/>
   <lib desc="#Plexers" name="3">
@@ -79,6 +80,8 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <circ-port height="8" pin="230,220" width="8" x="46" y="76"/>
       <circ-port height="10" pin="350,170" width="10" x="95" y="65"/>
       <circ-port height="10" pin="350,210" width="10" x="75" y="85"/>
+      <circ-port height="10" pin="350,170" width="10" x="95" y="75"/>
+      <circ-port height="8" pin="230,220" width="8" x="46" y="86"/>
       <circ-anchor facing="east" height="6" width="6" x="97" y="67"/>
     </appear>
     <wire from="(270,160)" to="(290,160)"/>
@@ -91,16 +94,6 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(250,180)" to="(250,220)"/>
     <wire from="(270,160)" to="(270,200)"/>
     <wire from="(230,220)" to="(250,220)"/>
-    <comp lib="7" loc="(290,68)" name="Text">
-      <a name="text" val="Meio somador"/>
-    </comp>
-    <comp lib="1" loc="(320,210)" name="AND Gate"/>
-    <comp lib="0" loc="(350,170)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="S0"/>
-    </comp>
     <comp lib="0" loc="(350,210)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
@@ -111,24 +104,34 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="tristate" val="false"/>
       <a name="label" val="B0"/>
     </comp>
-    <comp lib="1" loc="(320,210)" name="AND Gate"/>
-    <comp lib="7" loc="(290,68)" name="Text">
-      <a name="text" val="Meio somador"/>
-    </comp>
-    <comp lib="0" loc="(230,160)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="A0"/>
-    </comp>
-    <comp lib="0" loc="(230,220)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="B0"/>
-    </comp>
-    <comp lib="1" loc="(330,170)" name="XOR Gate"/>
     <comp lib="0" loc="(350,170)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="tristate" val="false"/>
       <a name="label" val="S0"/>
+    </comp>
+    <comp lib="0" loc="(230,220)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="B0"/>
+    </comp>
+    <comp lib="7" loc="(290,68)" name="Text">
+      <a name="text" val="Meio somador"/>
+    </comp>
+    <comp lib="0" loc="(350,170)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="S0"/>
+    </comp>
+    <comp lib="1" loc="(320,210)" name="AND Gate"/>
+    <comp lib="1" loc="(320,210)" name="AND Gate"/>
+    <comp lib="7" loc="(290,68)" name="Text">
+      <a name="text" val="Meio somador"/>
+    </comp>
+    <comp lib="1" loc="(330,170)" name="XOR Gate"/>
+    <comp lib="0" loc="(230,160)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="A0"/>
     </comp>
   </circuit>
   <circuit name="Somador Completo">
@@ -165,22 +168,20 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(280,140)" to="(310,140)"/>
     <wire from="(340,150)" to="(360,150)"/>
     <wire from="(190,160)" to="(310,160)"/>
-    <comp loc="(300,100)" name="Meio Somador"/>
-    <comp loc="(210,120)" name="Meio Somador"/>
-    <comp lib="0" loc="(110,100)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="A0"/>
-      <a name="labelloc" val="west"/>
-    </comp>
     <comp lib="1" loc="(340,150)" name="OR Gate"/>
+    <comp lib="7" loc="(231,48)" name="Text">
+      <a name="text" val="Somador Completo"/>
+      <a name="font" val="Dialog plain 12"/>
+    </comp>
+    <comp loc="(300,100)" name="Meio Somador"/>
     <comp lib="0" loc="(110,140)" name="Pin">
       <a name="tristate" val="false"/>
       <a name="label" val="B0"/>
       <a name="labelloc" val="west"/>
     </comp>
-    <comp lib="0" loc="(110,180)" name="Pin">
+    <comp lib="0" loc="(110,100)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="Ci0"/>
+      <a name="label" val="A0"/>
       <a name="labelloc" val="west"/>
     </comp>
     <comp lib="0" loc="(360,150)" name="Pin">
@@ -190,10 +191,12 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="label" val="S0"/>
     </comp>
     <comp loc="(210,120)" name="Meio Somador"/>
-    <comp lib="7" loc="(231,48)" name="Text">
-      <a name="text" val="Somador Completo"/>
-      <a name="font" val="Dialog plain 12"/>
+    <comp lib="0" loc="(110,180)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="Ci0"/>
+      <a name="labelloc" val="west"/>
     </comp>
+    <comp loc="(210,120)" name="Meio Somador"/>
     <comp lib="0" loc="(360,100)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
@@ -239,18 +242,14 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(340,150)" to="(400,150)"/>
     <wire from="(340,210)" to="(390,210)"/>
     <wire from="(340,310)" to="(400,310)"/>
-    <wire from="(400,150)" to="(400,220)"/>
     <wire from="(390,230)" to="(400,230)"/>
     <wire from="(390,210)" to="(390,230)"/>
     <wire from="(400,250)" to="(400,310)"/>
     <wire from="(390,240)" to="(400,240)"/>
     <wire from="(340,260)" to="(390,260)"/>
     <wire from="(390,240)" to="(390,260)"/>
-    <wire from="(420,210)" to="(450,210)"/>
-    <wire from="(170,120)" to="(180,120)"/>
     <wire from="(180,110)" to="(180,120)"/>
     <wire from="(180,110)" to="(220,110)"/>
-    <wire from="(170,150)" to="(180,150)"/>
     <wire from="(180,150)" to="(180,160)"/>
     <wire from="(360,330)" to="(380,330)"/>
     <wire from="(360,290)" to="(360,330)"/>
@@ -263,24 +262,15 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(320,330)" to="(320,340)"/>
     <wire from="(320,340)" to="(320,350)"/>
     <wire from="(420,340)" to="(440,340)"/>
-    <comp lib="1" loc="(420,340)" name="XOR Gate"/>
-    <comp loc="(340,150)" name="Somador Completo"/>
-    <comp lib="0" loc="(320,350)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
+    <wire from="(420,210)" to="(450,210)"/>
+    <wire from="(400,150)" to="(400,220)"/>
+    <wire from="(170,120)" to="(180,120)"/>
+    <wire from="(170,150)" to="(180,150)"/>
+    <comp lib="0" loc="(320,120)" name="Pin">
+      <a name="facing" val="south"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Carry out"/>
       <a name="labelloc" val="south"/>
-    </comp>
-    <comp loc="(340,310)" name="Somador Completo"/>
-    <comp lib="0" loc="(420,210)" name="Splitter">
-      <a name="facing" val="west"/>
-    </comp>
-    <comp lib="0" loc="(170,120)" name="Pin">
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="A"/>
-      <a name="labelloc" val="west"/>
     </comp>
     <comp lib="0" loc="(440,340)" name="Pin">
       <a name="facing" val="west"/>
@@ -288,6 +278,11 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="tristate" val="false"/>
       <a name="label" val="Over flow"/>
       <a name="labelloc" val="south"/>
+    </comp>
+    <comp loc="(340,150)" name="Somador Completo"/>
+    <comp loc="(340,310)" name="Somador Completo"/>
+    <comp lib="0" loc="(180,160)" name="Splitter">
+      <a name="facing" val="south"/>
     </comp>
     <comp lib="0" loc="(450,210)" name="Pin">
       <a name="facing" val="west"/>
@@ -297,14 +292,36 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="label" val="S"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp loc="(340,210)" name="Somador Completo"/>
+    <comp lib="1" loc="(420,340)" name="XOR Gate"/>
     <comp lib="0" loc="(220,110)" name="Splitter">
       <a name="facing" val="south"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Carry in"/>
     </comp>
-    <comp lib="0" loc="(180,160)" name="Splitter">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(170,150)" name="Pin">
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="0" loc="(420,210)" name="Splitter">
+      <a name="facing" val="west"/>
+    </comp>
+    <comp loc="(340,210)" name="Somador Completo"/>
+    <comp lib="0" loc="(170,120)" name="Pin">
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="A"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp lib="0" loc="(320,350)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Carry out"/>
+      <a name="labelloc" val="south"/>
+    </comp>
+    <comp lib="7" loc="(118,140)" name="Text">
+      <a name="text" val="+"/>
+      <a name="font" val="Dialog plain 12"/>
     </comp>
     <comp lib="0" loc="(170,120)" name="Pin">
       <a name="width" val="4"/>
@@ -312,16 +329,12 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="label" val="A"/>
       <a name="labelloc" val="west"/>
     </comp>
-    <comp lib="0" loc="(320,120)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Carry out"/>
-      <a name="labelloc" val="south"/>
-    </comp>
     <comp loc="(340,260)" name="Somador Completo"/>
-    <comp lib="7" loc="(118,140)" name="Text">
-      <a name="text" val="+"/>
-      <a name="font" val="Dialog plain 12"/>
+    <comp lib="0" loc="(170,150)" name="Pin">
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+      <a name="labelloc" val="west"/>
     </comp>
   </circuit>
   <circuit name="main">
@@ -330,14 +343,7 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="Dialog plain 12"/>
     <a name="clabelcolor" val="#000000"/>
-    <wire from="(250,400)" to="(310,400)"/>
-    <wire from="(150,190)" to="(150,200)"/>
-    <wire from="(140,200)" to="(150,200)"/>
-    <wire from="(270,160)" to="(270,170)"/>
     <wire from="(150,190)" to="(190,190)"/>
-    <wire from="(140,170)" to="(150,170)"/>
-    <wire from="(190,190)" to="(260,190)"/>
-    <wire from="(190,180)" to="(260,180)"/>
     <wire from="(150,180)" to="(190,180)"/>
     <wire from="(530,210)" to="(530,220)"/>
     <wire from="(470,110)" to="(520,110)"/>
@@ -365,17 +371,11 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(420,190)" to="(490,190)"/>
     <wire from="(420,170)" to="(460,170)"/>
     <wire from="(440,120)" to="(440,150)"/>
-    <wire from="(310,180)" to="(310,200)"/>
-    <wire from="(310,200)" to="(320,200)"/>
-    <wire from="(290,180)" to="(310,180)"/>
-    <wire from="(310,180)" to="(380,180)"/>
     <wire from="(250,380)" to="(310,380)"/>
     <wire from="(290,300)" to="(340,300)"/>
-    <wire from="(250,400)" to="(300,400)"/>
     <wire from="(260,330)" to="(260,340)"/>
     <wire from="(350,330)" to="(350,340)"/>
     <wire from="(350,400)" to="(350,410)"/>
-    <wire from="(310,380)" to="(310,400)"/>
     <wire from="(340,400)" to="(340,420)"/>
     <wire from="(360,320)" to="(360,340)"/>
     <wire from="(270,320)" to="(270,350)"/>
@@ -384,16 +384,12 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(250,360)" to="(280,360)"/>
     <wire from="(260,330)" to="(350,330)"/>
     <wire from="(270,320)" to="(360,320)"/>
-    <wire from="(300,340)" to="(330,340)"/>
-    <wire from="(310,400)" to="(330,400)"/>
     <wire from="(320,420)" to="(340,420)"/>
     <wire from="(340,300)" to="(340,340)"/>
     <wire from="(190,370)" to="(210,370)"/>
     <wire from="(250,350)" to="(270,350)"/>
     <wire from="(250,340)" to="(260,340)"/>
     <wire from="(280,360)" to="(280,410)"/>
-    <wire from="(320,370)" to="(320,420)"/>
-    <wire from="(300,340)" to="(300,400)"/>
     <wire from="(250,370)" to="(320,370)"/>
     <wire from="(280,410)" to="(350,410)"/>
     <wire from="(190,190)" to="(190,370)"/>
@@ -428,57 +424,26 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(300,190)" to="(300,210)"/>
     <wire from="(290,190)" to="(300,190)"/>
     <wire from="(270,200)" to="(270,210)"/>
-    <comp lib="6" loc="(510,150)" name="7-Segment Display"/>
-    <comp lib="7" loc="(89,44)" name="Text">
-      <a name="text" val="Calculadora de 4 bits"/>
-      <a name="font" val="Dialog plain 12"/>
-    </comp>
-    <comp lib="0" loc="(320,200)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Over Flow"/>
-      <a name="labelloc" val="south"/>
-    </comp>
-    <comp lib="0" loc="(140,190)" name="Pin">
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="A"/>
-      <a name="labelloc" val="west"/>
-    </comp>
-    <comp loc="(290,200)" name="Somador de 4 bits"/>
-    <comp lib="3" loc="(420,200)" name="DisplayDecoder"/>
-    <comp lib="3" loc="(250,390)" name="DisplayDecoder"/>
-    <comp lib="0" loc="(270,230)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Carry Out"/>
-      <a name="labelloc" val="west"/>
-    </comp>
-    <comp lib="3" loc="(250,370)" name="DisplayDecoder"/>
-    <comp loc="(290,180)" name="Somador de 4 bits"/>
+    <wire from="(140,220)" to="(150,220)"/>
+    <wire from="(150,190)" to="(150,220)"/>
+    <wire from="(140,150)" to="(150,150)"/>
+    <wire from="(150,150)" to="(150,180)"/>
+    <wire from="(300,340)" to="(330,340)"/>
+    <wire from="(320,370)" to="(320,420)"/>
+    <wire from="(250,400)" to="(300,400)"/>
+    <wire from="(310,400)" to="(330,400)"/>
+    <wire from="(310,380)" to="(310,400)"/>
+    <wire from="(300,340)" to="(300,400)"/>
+    <wire from="(190,180)" to="(260,180)"/>
+    <wire from="(190,190)" to="(260,190)"/>
+    <wire from="(270,160)" to="(270,170)"/>
+    <wire from="(290,180)" to="(380,180)"/>
+    <comp lib="6" loc="(330,40)" name="7-Segment Display"/>
     <comp lib="0" loc="(270,160)" name="Pin">
       <a name="facing" val="south"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Carry In"/>
       <a name="labelloc" val="west"/>
-    </comp>
-    <comp lib="3" loc="(420,180)" name="DisplayDecoder"/>
-    <comp lib="0" loc="(140,200)" name="Pin">
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="B"/>
-      <a name="labelloc" val="west"/>
-    </comp>
-    <comp lib="0" loc="(140,170)" name="Pin">
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="A"/>
-      <a name="labelloc" val="west"/>
-    </comp>
-    <comp lib="7" loc="(89,189)" name="Text">
-      <a name="text" val="+"/>
-      <a name="font" val="Dialog plain 12"/>
     </comp>
     <comp lib="0" loc="(300,210)" name="Pin">
       <a name="facing" val="north"/>
@@ -486,8 +451,16 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="label" val="Over Flow"/>
       <a name="labelloc" val="south"/>
     </comp>
+    <comp lib="0" loc="(140,150)" name="Pin">
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="A"/>
+      <a name="labelloc" val="west"/>
+    </comp>
+    <comp loc="(290,180)" name="Somador de 4 bits"/>
+    <comp lib="6" loc="(510,150)" name="7-Segment Display"/>
     <comp lib="3" loc="(250,70)" name="DisplayDecoder"/>
-    <comp lib="6" loc="(330,40)" name="7-Segment Display"/>
+    <comp lib="3" loc="(420,180)" name="DisplayDecoder"/>
     <comp lib="0" loc="(270,210)" name="Pin">
       <a name="facing" val="north"/>
       <a name="output" val="true"/>
@@ -495,6 +468,21 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="label" val="Carry Out"/>
       <a name="labelloc" val="west"/>
     </comp>
+    <comp lib="0" loc="(140,220)" name="Pin">
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="B"/>
+      <a name="labelloc" val="west"/>
+    </comp>
     <comp lib="6" loc="(330,340)" name="7-Segment Display"/>
+    <comp lib="3" loc="(250,370)" name="DisplayDecoder"/>
+    <comp lib="7" loc="(89,189)" name="Text">
+      <a name="text" val="+"/>
+      <a name="font" val="Dialog plain 12"/>
+    </comp>
+    <comp lib="7" loc="(89,44)" name="Text">
+      <a name="text" val="Calculadora de 4 bits"/>
+      <a name="font" val="Dialog plain 12"/>
+    </comp>
   </circuit>
 </project>
