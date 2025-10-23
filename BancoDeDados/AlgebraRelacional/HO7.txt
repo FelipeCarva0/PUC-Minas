@@ -22,11 +22,29 @@ FROM movies AS A JOIN roles AS C ON A.id = C.movie_id JOIN actors AS B ON B.id =
 WHERE A.rank > 6
 
 
-/*Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.*/
+/* Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero */
+SELECT A.genre,
+       AVG(B.rank) AS media,
+       MIN(B.rank) AS minimo,
+       MAX(B.rank) AS maximo
+FROM movies_genres AS A
+JOIN movies AS B ON A.movie_id = B.id
+GROUP BY A.genre;
 
-SELECT A.genre, AVG(B.rank) AS MEDIA, MIN(B.rank) AS MINIMO, MAX(B.rank) AS MAXIMO
-FROM movies_genres AS A JOIN movies AS B ON (A.movie_id = B.id)
-GROUP BY A.genre
 
+/* Projetar o nome do diretor e o número de filmes que cada diretor dirigiu */
+SELECT D.first_name AS nome_diretor,
+       D.last_name AS sobrenome_diretor,
+       COUNT(MD.movie_id) AS quantidade_filmes
+FROM directors AS D
+JOIN movies_directors AS MD ON D.id = MD.director_id
+GROUP BY D.id, D.first_name, D.last_name;
+
+
+/* Projetar o gênero e o número de filmes de cada gênero */
+SELECT genre,
+       COUNT(movie_id) AS quantidade_filmes
+FROM movies_genres
+GROUP BY genre;
 
 
