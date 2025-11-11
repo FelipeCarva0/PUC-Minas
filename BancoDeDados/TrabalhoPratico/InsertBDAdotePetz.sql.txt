@@ -1,0 +1,71 @@
+-- =============================================
+-- DADOS INICIAIS PARA O BANCO ADOTEPETZ
+-- =============================================
+
+-- 1. ORGANIZAÇÕES
+INSERT INTO organizacao (nome, telefone) VALUES
+('Amor Animal', '(11) 91234-5678'),
+('Cuidadores do Bem', '(21) 99876-5432'),
+('Patas Felizes', '(31) 93456-7890');
+
+-- 2. UNIDADES
+INSERT INTO unidade (nome, capacidade_max, espaco_dedicado, logradouro, numero, bairro, cidade, estado, cep) VALUES
+('Unidade Centro', 50, 'Alojamento e clínica', 'Rua das Flores', '100', 'Centro', 'São Paulo', 'SP', '01000-000'),
+('Unidade Leste', 30, 'Alojamento', 'Av. Leste', '250', 'Leste', 'Rio de Janeiro', 'RJ', '20000-000'),
+('Unidade Sul', 40, 'Clínica veterinária', 'Rua Sul', '75', 'Sul', 'Belo Horizonte', 'MG', '30000-000');
+
+-- 3. VOLUNTÁRIOS
+INSERT INTO voluntario (cpf, nome, telefone, funcao, disponibilidade, id_org) VALUES
+('12345678901', 'Ana Silva', '(11) 91234-1111', 'Cuidadora', 'Finais de semana', 1),
+('23456789012', 'Bruno Lima', '(21) 99876-2222', 'Veterinário', 'Segunda a sexta', 2),
+('34567890123', 'Carla Souza', '(31) 93456-3333', 'Apoio administrativo', 'Sábados', 3);
+
+-- 4. ANIMAIS
+INSERT INTO animal (nome, especie, raca, sexo, idade, status_atual, id_org) VALUES
+('Rex', 'Cachorro', 'Vira-lata', 'M', 3, 'Disponível', 1),
+('Mimi', 'Gato', 'Siamês', 'F', 2, 'Disponível', 2),
+('Toby', 'Cachorro', 'Beagle', 'M', 4, 'Em adoção', 3);
+
+-- 5. RECEPTORES
+INSERT INTO receptor (cpf, nome, data_nascimento, telefone, logradouro, numero, bairro, cidade, estado, cep) VALUES
+('11122233344', 'Lucas Pereira', '1990-05-10', '(11) 90000-1111', 'Rua A', '100', 'Centro', 'São Paulo', 'SP', '01000-001'),
+('22233344455', 'Mariana Costa', '1985-07-20', '(21) 90000-2222', 'Av. B', '200', 'Leste', 'Rio de Janeiro', 'RJ', '20000-002');
+
+-- 6. FEIRAS DE ADOÇÃO
+INSERT INTO feira_adocao (nome, data_evento, cidade, estado, id_org) VALUES
+('Feira SP Centro', '2025-12-01', 'São Paulo', 'SP', 1),
+('Feira RJ Leste', '2025-12-05', 'Rio de Janeiro', 'RJ', 2);
+
+-- 7. RELAÇÃO FEIRA-VOLUNTÁRIO
+INSERT INTO feira_voluntario (id_feira, cpf_voluntario) VALUES
+(1, '12345678901'),
+(2, '23456789012');
+
+-- 8. RELAÇÃO FEIRA-ANIMAL
+INSERT INTO feira_animal (id_feira, id_animal) VALUES
+(1, 1),
+(2, 2);
+
+-- 9. HISTÓRICO DE SAÚDE
+INSERT INTO historico_saude (id_animal, data_registro, procedimento, descricao) VALUES
+(1, '2025-01-10', 'Vacina Antirrábica', 'Vacina aplicada corretamente'),
+(2, '2025-03-15', 'Check-up', 'Gato saudável, sem problemas');
+
+-- 10. CAPTURADORES
+INSERT INTO capturador (cpf, nome, telefone) VALUES
+('55566677788', 'José Almeida', '(11) 95555-6666'),
+('66677788899', 'Fernanda Melo', '(21) 96666-7777');
+
+-- 11. CAPTURAS
+INSERT INTO captura (cpf_capturador, id_animal, data_captura, local_captura) VALUES
+('55566677788', 1, '2025-01-05', 'Rua das Flores, SP'),
+('66677788899', 2, '2025-02-10', 'Av. Leste, RJ');
+
+-- 12. ALOJAMENTOS
+INSERT INTO alojamento (id_animal, id_unidade, data_alojamento) VALUES
+(1, 1, '2025-01-06'),
+(2, 2, '2025-02-11');
+
+-- 13. ADOÇÕES
+INSERT INTO adocao (id_animal, cpf_receptor, data_adocao) VALUES
+(2, '22233344455', '2025-04-01');

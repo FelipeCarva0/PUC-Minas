@@ -1,0 +1,183 @@
+-- ============================================
+-- BANCO DE DADOS: Sistema Adote Petz 3.0
+-- ============================================
+
+CREATE DATABASE AdotePetz;
+USE AdotePetz;
+
+-- ============================================
+-- TABELA: ORGANIZACAO
+-- ============================================
+CREATE TABLE Organizacao (
+    id_org INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    telefone VARCHAR(20)
+);
+
+-- ============================================
+-- TABELA: UNIDADE
+-- ============================================
+CREATE TABLE Unidade (
+    id_unidade INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    capacidade_max INT NOT NULL,
+    espaco_dedicado VARCHAR(100),
+    logradouro VARCHAR(150),
+    numero VARCHAR(10),
+    bairro VARCHAR(60),
+    cidade VARCHAR(60),
+    estado CHAR(2),
+    cep VARCHAR(10)
+);
+
+-- ============================================
+-- RELAÇÃO N:N ENTRE ORGANIZAÇÃO E UNIDADE
+-- ============================================
+CREATE TABLE Organizacao_Unidade (
+    id_org INT,
+    id_unidade INT,
+    PRIMARY KEY (id_org, id_unidade),
+    FOREIGN KEY (id_org) REFERENCES Organizacao(id_org),
+    FOREIGN KEY (id_unidade) REFERENCES Unidade(id_unidade)
+);
+
+-- ============================================
+-- TABELA: ANIMAL
+-- ============================================
+CREATE TABLE Animal (
+    id_animal INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    especie VARCHAR(50),
+    raca VARCHAR(50),
+    sexo ENUM('M', 'F'),
+    idade INT,
+    status_atual VARCHAR(50),
+    id_org INT NOT NULL,
+    FOREIGN KEY (id_org) REFERENCES Organizacao(id_org)
+);
+
+-- ============================================
+-- RELAÇÃO N:N ENTRE ANIMAL E UNIDADE (ALOJAMENTO)
+-- ============================================
+CREATE TABLE Alojamento (
+    id_animal INT,
+    id_unidade INT,
+    data_alojamento DATE NOT NULL,
+    PRIMARY KEY (id_animal, id_unidade, data_alojamento),
+    FOREIGN KEY (id_animal) REFERENCES Animal(id_animal),
+    FOREIGN KEY (id_unidade) REFERENCES Unidade(id_unidade)
+);
+
+-- ============================================
+-- TABELA: VOLUNTARIO
+-- ============================================
+CREATE TABLE Voluntario (
+    cpf CHAR(11) PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20),
+    funcao VARCHAR(50),
+    disponibilidade VARCHAR(100),
+    id_org INT NOT NULL,
+    FOREIGN KEY (id_org) REFERENCES Organizacao(id_org)
+);
+
+-- ============================================
+-- TABELA: HISTORICO SAUDE ANIMAL
+-- ============================================
+CREATE TABLE Historico_Saude (
+    id_historico INT AUTO_INCREMENT PRIMARY KEY,
+    id_animal INT NOT NULL,
+    data_registro DATE NOT NULL,
+    procedimento VARCHAR(100),
+    descricao TEXT,
+    FOREIGN KEY (id_animal) REFERENCES Animal(id_animal)
+);
+
+-- ============================================
+-- TABELA: CAPTURADOR
+-- ============================================
+CREATE TABLE Capturador (
+    cpf CHAR(11) PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20)
+);
+
+-- ============================================
+-- TABELA: CAPTURA
+-- ============================================
+CREATE TABLE Captura (
+    id_captura INT AUTO_INCREMENT PRIMARY KEY,
+    cpf_capturador CHAR(11) NOT NULL,
+    id_animal INT NOT NULL,
+    data_captura DATE NOT NULL,
+    local_captura VARCHAR(150),
+    FOREIGN KEY (cpf_capturador) REFERENCES Capturador(cpf),
+    FOREIGN KEY (id_animal) REFERENCES Animal(id_animal)
+);
+
+-- ============================================
+-- TABELA: RECEPTOR (ADOTANTE)
+-- ============================================
+CREATE TABLE Receptor (
+    cpf CHAR(11) PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE,
+    telefone VARCHAR(20),
+    logradouro VARCHAR(150),
+    numero VARCHAR(10),
+    bairro VARCHAR(60),
+    cidade VARCHAR(60),
+    estado CHAR(2),
+    cep VARCHAR(10)
+);
+
+-- ============================================
+-- TABELA: ADOCÃO
+-- ============================================
+CREATE TABLE Adocao (
+    id_adocao INT AUTO_INCREMENT PRIMARY KEY,
+    id_animal INT NOT NULL,
+    cpf_receptor CHAR(11) NOT NULL,
+    data_adocao DATE NOT NULL,
+    FOREIGN KEY (id_animal) REFERENCES Animal(id_animal),
+    FOREIGN KEY (cpf_receptor) REFERENCES Receptor(cpf)
+);
+
+-- ============================================
+-- TABELA: FEIRA DE ADOÇÃO
+-- ============================================
+CREATE TABLE Feira_Adocao (
+    id_feira INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    data_evento DATE NOT NULL,
+    cidade VARCHAR(60),
+    estado CHAR(2),
+    id_org INT NOT NULL,
+    FOREIGN KEY (id_org) REFERENCES Organizacao(id_org)
+);
+
+-- ============================================
+-- RELAÇÃO N:N ENTRE ANIMAL E FEIRA DE ADOÇÃO
+-- ============================================
+CREATE TABLE Feira_Animal (
+    id_feira INT,
+    id_animal INT,
+    PRIMARY KEY (id_feira, id_animal),
+    FOREIGN KEY (id_feira) REFERENCES Feira_Adocao(id_feira),
+    FOREIGN KEY (id_animal) REFERENCES Animal(id_animal)
+);
+
+-- ============================================
+-- RELAÇÃO N:N ENTRE VOLUNTARIO E FEIRA DE ADOÇÃO
+-- ============================================
+CREATE TABLE Feira_Voluntario (
+    id_feira INT,
+    cpf_voluntario CHAR(11),
+    PRIMARY KEY (id_feira, cpf_voluntario),
+    FOREIGN KEY (id_feira) REFERENCES Feira_Adocao(id_feira),
+    FOREIGN KEY (cpf_voluntario) REFERENCES Voluntario(cpf)
+);
+
+-- ============================================
+-- FIM DO SCRIPT
+-- ============================================
