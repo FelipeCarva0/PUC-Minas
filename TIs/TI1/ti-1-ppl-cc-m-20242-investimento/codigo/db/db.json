@@ -6,6 +6,13 @@
       "senha": "admin",
       "nome": "admin",
       "email": "admin@gmail.com"
+    },
+    {
+      "login": "e",
+      "senha": "e",
+      "nome": "e",
+      "email": "e",
+      "id": 2
     }
   ],
   "noticias": [
